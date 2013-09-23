@@ -37,11 +37,22 @@ endfunction
 " speed: Scrolling speed, or the number of lines to scroll during each scrolling
 " animation
 function! s:smooth_scroll(dir, dist, duration, speed)
+  let last_line_number = line('$')
   for i in range(a:dist/a:speed)
     let start = reltime()
+    let current_line = line('.')
+    let current_window_line = winline()
     if a:dir ==# 'd'
+      let at_bottom = current_window_line == 1 && current_line == last_line_number
+      if at_bottom
+        break
+      endif
       exec "normal! ".a:speed."\<C-e>".a:speed."j"
     else
+      let at_top = current_window_line == 1 && current_line == 1
+      if at_top
+        break
+      endif
       exec "normal! ".a:speed."\<C-y>".a:speed."k"
     endif
     redraw
