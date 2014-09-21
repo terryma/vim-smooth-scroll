@@ -40,9 +40,9 @@ function! s:smooth_scroll(dir, dist, duration, speed)
   for i in range(a:dist/a:speed)
     let start = reltime()
     if a:dir ==# 'd'
-      exec "normal! ".a:speed."\<C-e>".a:speed."j"
+      exec "normal! ".a:speed."j\<C-e>"
     else
-      exec "normal! ".a:speed."\<C-y>".a:speed."k"
+      exec "normal! ".a:speed."k\<C-y>"
     endif
     redraw
     let elapsed = s:get_ms_since(start)
