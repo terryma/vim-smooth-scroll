@@ -37,6 +37,8 @@ endfunction
 " speed: Scrolling speed, or the number of lines to scroll during each scrolling
 " animation
 function! s:smooth_scroll(dir, dist, duration, speed)
+  if a:speed == 0
+    echoerr "Speed argument must not be zero"
   for i in range(a:dist/a:speed)
     let start = reltime()
     if a:dir ==# 'd'
