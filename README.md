@@ -10,10 +10,15 @@ Install using [Pathogen], [Vundle], [Neobundle], or your favorite Vim package ma
 Map your favorite keys like below:
 
 ```vim
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+nnoremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+nnoremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" stay in insert mode when scrolling in insert mode
+inoremap <silent> <c-u> <ESC>:call smooth_scroll#up(&scroll, 0, 2)<CR>i
+inoremap <silent> <c-d> <ESC>:call smooth_scroll#down(&scroll, 0, 2)<CR>i
+inoremap <silent> <c-b> <ESC>:call smooth_scroll#up(&scroll*2, 0, 4)<CR>i
+inoremap <silent> <c-f> <ESC>:call smooth_scroll#down(&scroll*2, 0, 4)<CR>i
 ```
 
 ## Function
